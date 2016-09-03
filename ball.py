@@ -7,6 +7,7 @@ class Ball:
         self.y = 0
         self.id = canvas.create_oval(10, 10, 25, 25, fill=color)
         self.canvas.move(self.id, 250, 250)
+        self.canvas_height = self.canvas.winfo_height();
 
     def draw(self):
         self.canvas.move(self.id, self.x, self.y)
@@ -14,11 +15,13 @@ class Ball:
         if self.hit_paddle(self.paddle1, pos) == True:
             self.x = 3
             self.hit_location(self.paddle1, pos)
-            #self.y = -1
         if self.hit_paddle(self.paddle2, pos) == True:
             self.x = -3
             self.hit_location(self.paddle2, pos)
-            #self.y = 1
+        if pos[1] <=0:
+            self.y = 1
+        if pos[3] >= self.canvas_height:
+            self.y = -1
 
     def hit_paddle(self, paddle, pos):
         paddle_pos = self.canvas.coords(paddle.id)
