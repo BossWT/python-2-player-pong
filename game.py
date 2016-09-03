@@ -11,9 +11,9 @@ def main():
     canvas.pack()
     tk.update()
 
-    ball = Ball(canvas,"red")
     paddle1 = Paddle(canvas, "blue",0, 0,"<KeyPress-w>", "<KeyPress-s>")
     paddle2 = Paddle(canvas, "green", 490, 0, "<KeyPress-Up>", "<KeyPress-Down>")
+    ball = Ball(canvas, "red", paddle1, paddle2)
 
     #config = Config()
     mainloop(tk,ball,paddle1,paddle2)
