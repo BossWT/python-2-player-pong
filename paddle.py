@@ -1,11 +1,13 @@
+import time
 class Paddle:
-    def __init__(self, canvas, color, startX, startY, upKey, downKey):
+    def __init__(self, canvas, color, startX, startY, upKey, downKey, stopKey):
         self.canvas = canvas
         self.id = canvas.create_rectangle(0, 0, 10, 100, fill=color)
         self.canvas.move(self.id, startX, startY)
         self.y = 0
         self.canvas.bind_all(upKey, self.go_up)
         self.canvas.bind_all(downKey, self.go_down)
+        self.canvas.bind_all(stopKey, self.stop)
         self.canvas_height = self.canvas.winfo_height()
 
     def draw(self):
@@ -25,3 +27,6 @@ class Paddle:
             self.y = 0
         else:
             self.y = 2
+
+    def stop(self, evt):
+        self.y = 0

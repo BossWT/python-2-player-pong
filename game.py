@@ -11,13 +11,12 @@ def main():
     canvas.pack()
     tk.update()
 
-    paddle1 = Paddle(canvas, "blue",0, 200,"<KeyPress-w>", "<KeyPress-s>")
-    paddle2 = Paddle(canvas, "green", 490, 200, "<KeyPress-Up>", "<KeyPress-Down>")
+    paddle1 = Paddle(canvas, "blue",0, 200,"<KeyPress-w>", "<KeyPress-s>", "<KeyPress-a>")
+    paddle2 = Paddle(canvas, "green", 490, 200, "<KeyPress-Up>", "<KeyPress-Down>", "<KeyPress-Right>")
     ball = Ball(canvas, "red", paddle1, paddle2)
 
     #config = Config()
     mainloop(tk,ball,paddle1,paddle2)
-
 
 def mainloop(tk, ball, paddle1, paddle2):
     while 1:
