@@ -1,6 +1,7 @@
 from tkinter import *
 from ball import *
 from paddle import *
+from score_zone import *
 from configure import Config
 import time
 
@@ -11,9 +12,11 @@ def main():
     canvas.pack()
     tk.update()
 
-    paddle1 = Paddle(canvas, "blue",0, 200,"<KeyPress-w>", "<KeyPress-s>", "<KeyPress-a>")
-    paddle2 = Paddle(canvas, "green", 490, 200, "<KeyPress-Up>", "<KeyPress-Down>", "<KeyPress-Right>")
+    paddle1 = Paddle(canvas, "blue", 20, 200,"<KeyPress-w>", "<KeyPress-s>", "<KeyPress-a>")
+    paddle2 = Paddle(canvas, "green", 475, 200, "<KeyPress-Up>", "<KeyPress-Down>", "<KeyPress-Right>")
     ball = Ball(canvas, "red", paddle1, paddle2)
+    scorezone1 = ScoreZone(canvas, "yellow", 0, 0)
+    scorezone2 = ScoreZone(canvas, "yellow", 485, 0)
 
     #config = Config()
     mainloop(tk,ball,paddle1,paddle2)
