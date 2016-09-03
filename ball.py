@@ -5,6 +5,7 @@ class Ball:
         self.paddle2 = paddle2
         self.x = -3
         self.id = canvas.create_oval(10, 10, 25, 25, fill=color)
+        self.canvas.move(self.id, 250, 250)
 
     def draw(self):
         self.canvas.move(self.id, self.x, 0)
