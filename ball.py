@@ -14,15 +14,21 @@ class Ball:
         self.randomize_movement() #The balls starting position is random
         self.id = canvas.create_oval(10, 10, 25, 25, fill=color)
         self.canvas.move(self.id, 250, 250)
-        self.canvas_height = self.canvas.winfo_height();
+        self.canvas_height = self.canvas.winfo_height()
+        self.boost = 3
+        self.boostCounter = 0
 
     def draw(self):
+        self.boostCounter += 1
+        if self.boostCounter == 100 and self.boost <= 6:
+            self.boostCounter = 0
+            self.boost += 1
         pos = self.canvas.coords(self.id)
         if self.hit_paddle(self.paddle1, pos) == True:
-            self.x = 3
+            self.x = self.boost
             self.hit_location(self.paddle1, pos)
         if self.hit_paddle(self.paddle2, pos) == True:
-            self.x = -3
+            self.x = -(self.boost)
             self.hit_location(self.paddle2, pos)
         if pos[1] <= 0:
             self.y = random.randint(1,3)
@@ -43,14 +49,25 @@ class Ball:
         centre = (paddle_pos[1] + paddle_pos[3]) / 2
         if pos[3] == centre:
             #if the ball hits the centre of the paddle
-            self.y = 0
+            if paddle.y < 0: #Hit while paddle is moving up
+                self.y = 1
+            elif paddle.y > 0: #Hit while paddle is moving down
+                self.y = -1
+            else:
+                self.y = 0
         elif pos[3] > centre:
             #if the ball hits the top half of the paddle
-            self.y = 1
+            #if the paddle isn't moving the movement is more steady
+            if paddle.y == 0:
+                self.y = 1
+            else:
+                self.y = 4
         elif pos[3] < centre:
             #if the ball hits the bottom half of the paddle
-            self.y = -1
-
+            if paddle.y == 0:
+                self.y = -1
+            else:
+                self.y = -4
     def goal(self, pos):
         P1Goal_pos = self.canvas.coords(self.P1Goal.id)
         P2Goal_pos = self.canvas.coords(self.P2Goal.id)
