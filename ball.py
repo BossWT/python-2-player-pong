@@ -25,9 +25,9 @@ class Ball:
             self.x = -3
             self.hit_location(self.paddle2, pos)
         if pos[1] <= 0:
-            self.y = 1
+            self.y = random.randint(1,3)
         if pos[3] >= self.canvas_height:
-            self.y = -1
+            self.y = -(random.randint(1,3))
         self.goal(pos)
         self.canvas.move(self.id, self.x, self.y)
 
