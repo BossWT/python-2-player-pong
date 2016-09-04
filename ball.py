@@ -100,6 +100,8 @@ class Ball:
             self.boostCounter = 0
             self.boost = self.normalSpeed
 
+            self.reset_paddles()
+
             #Get the ball's new speed
             self.randomize_movement()
 
@@ -131,6 +133,9 @@ class Ball:
             self.boostCounter = 0
             self.boost = self.normalSpeed
 
+            #Reset paddle positions
+            self.reset_paddles()
+
             #Get the ball's new speed
             self.randomize_movement()
 
@@ -141,3 +146,21 @@ class Ball:
         startY = [-1, 0, 1]
         random.shuffle(startY)
         self.y = startY[0]
+
+    def reset_paddles(self):
+        self.paddle1.y = 0
+        pos = self.canvas.coords(self.paddle1.id)
+        yToCen = abs(200-pos[1])
+
+        if pos[1] > 200:
+            self.canvas.move(self.paddle1.id, 0, -yToCen)
+        else:
+            self.canvas.move(self.paddle1.id, 0, yToCen)
+
+        self.paddle2.y = 0
+        pos = self.canvas.coords(self.paddle2.id)
+        yToCen = abs(200-pos[1])
+        if pos[1] > 200:
+            self.canvas.move(self.paddle2.id, 0, -yToCen)
+        else:
+            self.canvas.move(self.paddle2.id, 0, yToCen)
