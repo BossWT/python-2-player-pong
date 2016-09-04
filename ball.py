@@ -6,7 +6,9 @@ class Ball:
         self.P1Goal = P1Goal
         self.P2Goal = P2Goal
         self.P1Score = P1Score
+        self.score1 = 0
         self.P2Score = P2Score
+        self.score2 = 0
         self.x = -3
         self.y = 0
         self.id = canvas.create_oval(10, 10, 25, 25, fill=color)
@@ -54,6 +56,8 @@ class Ball:
         P1Goal_pos = self.canvas.coords(self.P1Goal.id)
         P2Goal_pos = self.canvas.coords(self.P2Goal.id)
         if pos[2] <= P1Goal_pos[2]:
+            #Player 2 scores a goal
+
             self.x = 0
             self.y = 0
 
@@ -61,28 +65,34 @@ class Ball:
             yToCen = abs(250-pos[1])
 
             if pos[1] > 250:
-                print(pos[1])
-                self.canvas.move(self.id, -xToCen, -yToCen)
+                #print("www " + str(pos[1]))
+                self.canvas.move(self.id, xToCen, -yToCen)
             else:
-                print(pos[1])
+                #print("wwwwwwww " + str(pos[1]))
                 self.canvas.move(self.id, xToCen, yToCen)
 
+            self.score2 += 1
+            print("p2 scores")
+            self.canvas.itemconfig(self.P2Score.id, text=str(self.score2))
             self.x = 2
-            #self.y = 1
 
-        if pos[0] >= P2Goal_pos[0]:
+        elif pos[0] >= P2Goal_pos[0]:
+            #Player 1 scores a goal
             self.x = 0
             self.y = 0
 
             xToCen = abs(250-pos[0])
             yToCen = abs(250-pos[1])
 
-            if pos[1] >= 250:
-                print("s" + str(pos[1]))
+            if pos[1] > 250:
+                #print("sss " + str(pos[1]))
                 self.canvas.move(self.id, -xToCen, -yToCen)
             else:
-                print(pos[1])
-                self.canvas.move(self.id, xToCen, yToCen)
+                #print("ssssss " + str(pos[1]))
+                self.canvas.move(self.id, -xToCen, yToCen)
 
+            self.score1 += 1
+            print("p1 scores")
+            self.canvas.itemconfig(self.P1Score.id, text=str(self.score1))
             self.x = 2
 
