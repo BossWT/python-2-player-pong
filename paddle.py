@@ -16,16 +16,16 @@ class Paddle:
             self.y = 0
 
     def go_up(self, evt):
-        if self.pos[1] <=0:
+        if self.pos[1] <= 0:
             self.y = 0
         else:
-            self.y = -3
+            self.y = -4
 
     def go_down(self, evt):
         if self.pos[3] >= self.canvas_height:
             self.y = 0
         else:
-            self.y = 3
+            self.y = 4
 
     def stop(self, evt):
         self.y = 0
