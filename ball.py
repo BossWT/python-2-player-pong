@@ -1,3 +1,5 @@
+import random
+
 class Ball:
     def __init__(self, canvas, color, paddle1, paddle2, P1Goal, P2Goal, P1Score, P2Score):
         self.canvas = canvas
@@ -9,8 +11,7 @@ class Ball:
         self.score1 = 0
         self.P2Score = P2Score
         self.score2 = 0
-        self.x = -3
-        self.y = 0
+        self.randomize_movement()
         self.id = canvas.create_oval(10, 10, 25, 25, fill=color)
         self.canvas.move(self.id, 250, 250)
         self.canvas_height = self.canvas.winfo_height();
@@ -74,7 +75,7 @@ class Ball:
             self.score2 += 1
             print("p2 scores")
             self.canvas.itemconfig(self.P2Score.id, text=str(self.score2))
-            self.x = 2
+            self.randomize_movement()
 
         elif pos[0] >= P2Goal_pos[0]:
             #Player 1 scores a goal
@@ -94,5 +95,12 @@ class Ball:
             self.score1 += 1
             print("p1 scores")
             self.canvas.itemconfig(self.P1Score.id, text=str(self.score1))
-            self.x = 2
+            self.randomize_movement()
 
+    def randomize_movement(self):
+        startx = [-3,-2, 2, 3]
+        random.shuffle(startx)
+        self.x = startx[0]
+        startY = [-2, -1, 0, 1, 2]
+        random.shuffle(startY)
+        self.y = startY[0]
