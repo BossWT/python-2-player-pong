@@ -32,9 +32,9 @@ class Ball:
             self.x = -(self.boost)
             self.hit_location(self.paddle2, pos)
         if pos[1] <= 0:
-            self.y = random.randint(1,3)
+            self.y = 2
         if pos[3] >= self.canvas_height:
-            self.y = -(random.randint(1,3))
+            self.y = -2
         self.goal(pos)
         self.canvas.move(self.id, self.x, self.y)
 
@@ -62,13 +62,13 @@ class Ball:
             if paddle.y == 0:
                 self.y = 1
             else:
-                self.y = 4
+                self.y = 2
         elif pos[3] < centre:
             #if the ball hits the bottom half of the paddle
             if paddle.y == 0:
                 self.y = -1
             else:
-                self.y = -4
+                self.y = -2
     def goal(self, pos):
         P1Goal_pos = self.canvas.coords(self.P1Goal.id)
         P2Goal_pos = self.canvas.coords(self.P2Goal.id)
@@ -97,6 +97,7 @@ class Ball:
             self.canvas.itemconfig(self.P2Score.id, text=str(self.score2))
 
             #Set speed back to normal
+            self.boostCounter = 0
             self.boost = self.normalSpeed
 
             #Get the ball's new speed
@@ -127,6 +128,7 @@ class Ball:
             self.canvas.itemconfig(self.P1Score.id, text=str(self.score1))
 
             #Set speed back to normal
+            self.boostCounter = 0
             self.boost = self.normalSpeed
 
             #Get the ball's new speed
@@ -136,6 +138,6 @@ class Ball:
         startx = [-3,-2, 2, 3]
         random.shuffle(startx)
         self.x = startx[0]
-        startY = [-2, -1, 0, 1, 2]
+        startY = [-1, 0, 1]
         random.shuffle(startY)
         self.y = startY[0]
