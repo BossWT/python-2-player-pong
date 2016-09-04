@@ -1,4 +1,3 @@
-import time
 class Paddle:
     def __init__(self, canvas, color, startX, startY, upKey, downKey, stopKey):
         self.canvas = canvas
@@ -20,13 +19,13 @@ class Paddle:
         if self.pos[1] <=0:
             self.y = 0
         else:
-            self.y = -2
+            self.y = -3
 
     def go_down(self, evt):
         if self.pos[3] >= self.canvas_height:
             self.y = 0
         else:
-            self.y = 2
+            self.y = 3
 
     def stop(self, evt):
         self.y = 0
