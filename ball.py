@@ -15,7 +15,8 @@ class Ball:
         self.id = canvas.create_oval(10, 10, 25, 25, fill=color)
         self.canvas.move(self.id, 250, 250)
         self.canvas_height = self.canvas.winfo_height()
-        self.boost = 3
+        self.normalSpeed = 3
+        self.boost = self.normalSpeed
         self.boostCounter = 0
 
     def draw(self):
@@ -95,6 +96,9 @@ class Ball:
             print("p2 scores")
             self.canvas.itemconfig(self.P2Score.id, text=str(self.score2))
 
+            #Set speed back to normal
+            self.boost = self.normalSpeed
+
             #Get the ball's new speed
             self.randomize_movement()
 
@@ -121,6 +125,9 @@ class Ball:
             self.score1 += 1
             print("p1 scores")
             self.canvas.itemconfig(self.P1Score.id, text=str(self.score1))
+
+            #Set speed back to normal
+            self.boost = self.normalSpeed
 
             #Get the ball's new speed
             self.randomize_movement()
