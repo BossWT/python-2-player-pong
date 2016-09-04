@@ -20,7 +20,7 @@ def main():
     P2Goal = ScoreZone(canvas, "yellow", 485, 0)
     P1Score = TextDisplay(canvas, 200, 20, "0")
     P2Score = TextDisplay(canvas, 300, 20, "0")
-    ball = Ball(canvas, "red", paddle1, paddle2, P1Goal, P2Goal)
+    ball = Ball(canvas, "red", paddle1, paddle2, P1Goal, P2Goal, P1Score, P2Score)
     #config = Config()
     mainloop(tk,ball,paddle1,paddle2)
 
