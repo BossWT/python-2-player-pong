@@ -12,7 +12,7 @@ class Paddle:
     def draw(self):
         self.canvas.move(self.id, 0, self.y)
         self.pos = self.canvas.coords(self.id)
-        if self.pos[1] <=0 or self.pos[3] >= self.canvas_height:
+        if self.pos[1] <= 0 or self.pos[3] >= self.canvas_height:
             self.y = 0
 
     def go_up(self, evt):
