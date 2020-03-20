@@ -9,6 +9,7 @@ Use git clone or click download at the green button above to download the game.
 ```bash
 git clone https://github.com/BossWT/python-2-player-pong.git
 ```
+#### Tkinter module are required for this game
 
 ## How to play
 
