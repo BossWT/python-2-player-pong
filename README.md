@@ -25,17 +25,16 @@ python game.py
 ```
 'W' for the paddle going up
 'S' for the paddle going down
+'A' for the paddle stop
 ```
 ### Player2
 ```
 '↑' for the paddle going up
 '↓' for the paddle going down
+'→' for the paddle stop
 ```
 - This game never ends. You can't stop playing without quit the program.
 #### -The next phase of this game will be the game menu and the pause button.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-## Credits
-[KDvu](https://github.com/KDvu/python-2-player-pong)
